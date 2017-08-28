@@ -10,7 +10,7 @@ public class Grupo{
     
     public void inscribir(Estudiante unEstudiante)
     {
-        if (unEstudiante[0]==null){
+        if (estudiantes[0]==null){
             estudiantes[0]=unEstudiante;
         }
     }
