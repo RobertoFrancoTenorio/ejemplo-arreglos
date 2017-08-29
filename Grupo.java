@@ -10,12 +10,21 @@ public class Grupo{
     
     public void inscribir(Estudiante unEstudiante)
     {
-        if (estudiantes[0]==null){
-            estudiantes[0]=unEstudiante;
+        int i;
+        for(i=0;i<estudiantes.length;i++){
+            if (estudiantes[i]==null){
+                estudiantes[i]=unEstudiante;
+            }
         }
     }
     
     public void darBaja(int claveEstudiante){
     //Buscar el estudiante con la clave y asignarle null
+        int i;
+        for(i=0;i<estudiantes.length;i++){
+            if(estudiantes[i].dimeClave()==claveEstudiante){
+                estudiantes[i]=null;
+            }
+        }
     }
 }
