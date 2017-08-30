@@ -1,21 +1,23 @@
 public class Grupo{
     private String nomMateria;
     private Estudiante[] estudiantes;
-    
-    /**
-     *Busca un estudiante por medio de su clave
-     *@param claveEstudiante parametro que representa la clave del estudiante
-     */
+   
     public Grupo(int totalEstudiantes, String nomMateria)
     {
         estudiantes= new Estudiante[totalEstudiantes];
         this.nomMateria=nomMateria;
     }
     
+    /**
+     *Busca un estudiante por medio de su clave
+     *@param claveEstudiante parametro que representa la clave del estudiante
+     */
     private int BuscarEstudiante(int claveEstudiante){
         for(int i=0;i < estudiantes.length;i++){
-            if(estudiantes[i].dimeClave()==claveEstudiante){
-                return i;
+            if(estudiantes[i]!=null){
+                if(estudiantes[i].dimeClave()==claveEstudiante){
+                    return i;
+                }
             }
         }
         return -1;
@@ -56,13 +58,22 @@ public class Grupo{
         return true; //El estudiante fue inscrito
     }
     
-    public void darBaja(int claveEstudiante){
+    /**
+     * Da de baja a un estudiante deseado
+     * @param claveEstudiante es el atributo clave de el onjeto estudiante que 
+     * se usa para dar de baja al estudiante
+     * @return regresa true si pudo darse de baja el alumno y false si no
+     * pude darse de baja
+     */
+    public boolean darBaja(int claveEstudiante){
     //Buscar el estudiante con la clave y asignarle null
         int i;
         for(i=0;i<estudiantes.length;i++){
-            if(estudiantes[i].dimeClave()==claveEstudiante){
+            if(this.BuscarEstudiante(claveEstudiante)!=-1){
                 estudiantes[i]=null;
+                return true;
             }
         }
+        return false;
     }
 }
